@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>F &amp; G Design &amp; Drafting · Architectural design in Sonoma County</title>
+    <meta name="description" content="F & G Design & Drafting is a small architectural design firm in Petaluma, Sonoma County: custom homes, additions, ADUs, permit and as-built drawings." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      :root {
+        --x-ink: #263238;
+        --x-ink-2: #55606a;
+        --x-terra: #a9573a;
+        --x-terra-dk: #8e4529;
+        --x-cream: #f7f3ee;
+        --x-paper: #fbf9f6;
+        --x-sand: #efe8df;
+        --x-rule: #ddd4c8;
+        --x-serif: "Cormorant Garamond", "Libre Caslon Text", Georgia, serif;
+        --x-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --x-max: 1180px;
+        --x-pad: clamp(20px, 5vw, 56px);
+        color-scheme: light;
+      }
+      body.x-site {
+        background: var(--x-cream);
+        color: var(--x-ink);
+        font: 400 16px/1.7 var(--x-sans);
+      }
+      .x-site a { color: inherit; }
+      .x-wrap { max-width: var(--x-max); margin: 0 auto; padding-inline: var(--x-pad); }
+      .x-label {
+        font: 600 12px/1.4 var(--x-sans);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--x-terra);
+        margin: 0 0 18px;
+        display: flex; align-items: center; gap: 14px;
+      }
+      .x-label::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+      .x-h2 {
+        font: 500 clamp(34px, 4.6vw, 54px)/1.08 var(--x-serif);
+        letter-spacing: -0.01em;
+        margin: 0 0 22px;
+        color: var(--x-ink);
+      }
+      .x-h2 em { color: var(--x-terra); }
+      .x-lead { font-size: 17px; color: var(--x-ink-2); max-width: 60ch; }
+      .x-lead + .x-lead { margin-top: 16px; }
+      .x-btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        min-height: 48px; padding: 0 26px;
+        font: 600 12px/1 var(--x-sans); letter-spacing: 0.16em; text-transform: uppercase;
+        text-decoration: none; border-radius: 2px; border: 1px solid var(--x-terra);
+        background: var(--x-terra); color: #fff !important;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        cursor: pointer;
+      }
+      .x-btn:hover { background: var(--x-terra-dk); border-color: var(--x-terra-dk); }
+      .x-btn--ghost { background: transparent; border-color: rgba(255,255,255,0.75); }
+      .x-btn--ghost:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+      .x-site :focus-visible { outline: 2px solid var(--x-terra); outline-offset: 3px; }
+
+      /* header */
+      .x-header {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(247, 243, 238, 0.94);
+        -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--x-rule);
+      }
+      .x-header__in { display: flex; align-items: center; gap: 24px; min-height: 76px; }
+      .x-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; margin-right: auto; }
+      .x-mark { position: relative; width: 86px; height: 48px; overflow: hidden; flex: none; }
+      .x-mark img {
+        position: absolute; max-width: none; width: 204px; height: auto;
+        left: -59px; top: -17px; mix-blend-mode: multiply;
+      }
+      .x-brand__name { font: 600 21px/1.05 var(--x-serif); color: var(--x-ink); }
+      .x-brand__name small {
+        display: block; margin-top: 4px;
+        font: 500 12px/1 var(--x-sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-terra);
+      }
+      .x-nav { display: flex; align-items: center; gap: 30px; }
+      .x-nav a:not(.x-btn) {
+        font: 500 12px/1 var(--x-sans); letter-spacing: 0.16em; text-transform: uppercase;
+        text-decoration: none; padding: 16px 0; position: relative;
+      }
+      .x-nav a:not(.x-btn)::after {
+        content: ""; position: absolute; left: 0; right: 100%; bottom: 10px; height: 1px;
+        background: var(--x-terra); transition: right 0.25s;
+      }
+      .x-nav a:not(.x-btn):hover::after { right: 0; }
+      .x-menu-btn {
+        display: none; width: 48px; height: 48px; border: 1px solid var(--x-rule); border-radius: 2px;
+        background: transparent; color: var(--x-ink); cursor: pointer; align-items: center; justify-content: center;
+      }
+      .x-menu-btn span, .x-menu-btn span::before, .x-menu-btn span::after {
+        display: block; width: 20px; height: 1.5px; background: currentColor; position: relative; transition: transform 0.2s, background 0.2s;
+      }
+      .x-menu-btn span::before, .x-menu-btn span::after { content: ""; position: absolute; left: 0; }
+      .x-menu-btn span::before { top: -6px; }
+      .x-menu-btn span::after { top: 6px; }
+      .x-menu-btn[aria-expanded="true"] span { background: transparent; }
+      .x-menu-btn[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+      .x-menu-btn[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+      @media (max-width: 960px) {
+        .x-menu-btn { display: inline-flex; }
+        .x-nav {
+          position: absolute; left: 0; right: 0; top: 100%;
+          flex-direction: column; align-items: stretch; gap: 0;
+          background: var(--x-cream); border-bottom: 1px solid var(--x-rule);
+          padding: 8px var(--x-pad) 24px; display: none;
+        }
+        .x-nav.is-open { display: flex; }
+        .x-nav a:not(.x-btn) { padding: 18px 0; border-bottom: 1px solid var(--x-rule); }
+        .x-nav a:not(.x-btn)::after { display: none; }
+        .x-nav .x-btn { margin-top: 20px; }
+      }
+      @media (max-width: 420px) { .x-brand__name { font-size: 18px; } .x-brand__name small { display: none; } }
+
+      /* hero */
+      .x-hero { position: relative; min-height: min(88vh, 820px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; background-color: var(--x-ink); }
+      .x-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .x-hero::before {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(38,50,56,0.05) 30%, rgba(38,50,56,0.78) 100%),
+          linear-gradient(90deg, rgba(38,50,56,0.45), rgba(38,50,56,0) 65%);
+        z-index: 1;
+      }
+      .x-hero__copy { position: relative; z-index: 2; padding-block: 120px clamp(56px, 9vw, 104px); }
+      .x-hero .x-label { color: #f3d9cc; }
+      .x-hero h1 {
+        font: 500 clamp(44px, 7vw, 88px)/1.02 var(--x-serif); letter-spacing: -0.015em;
+        margin: 0 0 24px; max-width: 14ch; color: #fff;
+      }
+      .x-hero h1 em { font-style: italic; color: #f1c7b4; }
+      .x-hero p.x-hero__sub { font-size: clamp(16px, 1.6vw, 18px); max-width: 58ch; color: rgba(255,255,255,0.9); margin-bottom: 34px; }
+      .x-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+
+      /* sections */
+      .x-section { padding-block: clamp(80px, 11vw, 140px); border-top: 1px solid var(--x-rule); }
+      .x-section--paper { background: var(--x-paper); }
+      .x-split { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+      @media (max-width: 860px) { .x-split { grid-template-columns: 1fr; } }
+      .x-frame { position: relative; margin: 0; }
+      .x-frame img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; }
+      .x-frame::after {
+        content: ""; position: absolute; inset: 18px -18px -18px 18px;
+        border: 1px solid var(--x-terra); z-index: -1; opacity: 0.6;
+      }
+      .x-frame { isolation: isolate; }
+      .x-sign { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--x-rule); display: flex; gap: 40px; flex-wrap: wrap; }
+      .x-sign dt { font: 600 12px/1.4 var(--x-sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--x-ink-2); }
+      .x-sign dd { margin: 6px 0 0; font: 500 24px/1.2 var(--x-serif); }
+      .x-sign dl { margin: 0; }
+
+      /* services */
+      .x-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; align-items: end; margin-bottom: 56px; }
+      .x-head .x-h2 { margin: 0; }
+      @media (max-width: 860px) { .x-head { grid-template-columns: 1fr; } }
+      .x-services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--x-rule); border-left: 1px solid var(--x-rule); }
+      @media (max-width: 960px) { .x-services { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 600px) { .x-services { grid-template-columns: 1fr; } }
+      .x-service {
+        padding: 40px 34px 44px; border-right: 1px solid var(--x-rule); border-bottom: 1px solid var(--x-rule);
+        background: var(--x-paper); transition: background 0.25s;
+      }
+      .x-service:hover { background: #fff; }
+      .x-service svg { width: 46px; height: 46px; color: var(--x-terra); margin-bottom: 26px; }
+      .x-service h3 { font: 600 26px/1.15 var(--x-serif); margin: 0 0 10px; }
+      .x-service p { color: var(--x-ink-2); font-size: 15px; }
+      .x-service__n { display: block; font: 500 12px/1 var(--x-sans); letter-spacing: 0.2em; color: var(--x-ink-2); margin-bottom: 18px; }
+
+      /* work */
+      .x-gallery { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 20px; }
+      .x-gallery figure { margin: 0; }
+      .x-gallery figure:first-child { grid-row: span 2; }
+      .x-gallery .x-tile { overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+      .x-gallery img { width: 100%; flex: 1; min-height: 0; object-fit: cover; aspect-ratio: 16 / 10; transition: transform 0.6s ease; }
+      .x-gallery figure:first-child img { aspect-ratio: auto; min-height: 420px; }
+      .x-gallery figure:hover img { transform: scale(1.03); }
+      .x-gallery .x-imgbox { overflow: hidden; flex: 1; display: flex; }
+      .x-gallery figcaption {
+        display: flex; justify-content: space-between; gap: 16px; padding-top: 14px;
+        font: 500 22px/1.2 var(--x-serif);
+      }
+      .x-gallery figcaption span { font: 600 12px/1.8 var(--x-sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--x-terra); white-space: nowrap; }
+      @media (max-width: 760px) {
+        .x-gallery { grid-template-columns: 1fr; }
+        .x-gallery figure:first-child { grid-row: auto; }
+        .x-gallery figure:first-child img { min-height: 0; aspect-ratio: 16 / 10; }
+      }
+      .x-note { margin-top: 28px; font-size: 13px; color: var(--x-ink-2); font-style: italic; }
+
+      /* process: blueprint grid */
+      .x-blueprint {
+        background-color: var(--x-ink); color: #eef1f2;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+        border-top: 0;
+      }
+      .x-blueprint .x-h2 { color: #fff; }
+      .x-blueprint .x-label { color: #e3a58c; }
+      .x-blueprint .x-lead { color: rgba(238,241,242,0.78); }
+      .x-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: s; }
+      @media (max-width: 960px) { .x-steps { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 560px) { .x-steps { grid-template-columns: 1fr; } }
+      .x-steps li { padding: 34px 28px 10px 0; border-top: 1px solid rgba(255,255,255,0.28); position: relative; }
+      .x-steps li::before {
+        content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px;
+        border: 1px solid #e3a58c; background: var(--x-ink); transform: rotate(45deg);
+      }
+      .x-steps__n { font: 500 64px/1 var(--x-serif); color: #e3a58c; display: block; margin-bottom: 16px; }
+      .x-steps h3 { font: 600 28px/1.1 var(--x-serif); margin: 0 0 10px; color: #fff; }
+      .x-steps p { color: rgba(238,241,242,0.8); font-size: 15px; }
+
+      /* service area */
+      .x-area { background: var(--x-sand); padding-block: 44px; border-top: 1px solid var(--x-rule); }
+      .x-area__in { display: flex; align-items: center; gap: 20px 48px; flex-wrap: wrap; }
+      .x-area .x-label { margin: 0; color: var(--x-terra-dk); }
+      .x-area ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 0; }
+      .x-area li { font: 500 24px/1.3 var(--x-serif); }
+      .x-area li + li::before { content: "·"; color: var(--x-terra); margin: 0 14px; }
+      .x-area li.x-area__more { font-style: italic; color: var(--x-ink-2); }
+
+      /* contact */
+      .x-contact { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 96px); }
+      @media (max-width: 860px) { .x-contact { grid-template-columns: 1fr; } }
+      .x-details { list-style: none; margin: 36px 0 0; padding: 0; border-top: 1px solid var(--x-rule); }
+      .x-details li { padding: 18px 0; border-bottom: 1px solid var(--x-rule); display: grid; grid-template-columns: 90px 1fr; gap: 16px; align-items: baseline; }
+      .x-details b { font: 600 12px/1.4 var(--x-sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--x-ink-2); }
+      .x-details a, .x-details span { font: 500 23px/1.3 var(--x-serif); text-decoration: none; word-break: break-word; }
+      .x-details a { display: inline-flex; align-items: center; min-height: 44px; }
+      .x-details li { align-items: center; }
+      .x-details a:hover { color: var(--x-terra); }
+      .x-habla {
+        display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
+        font: 500 italic 22px/1.2 var(--x-serif); color: var(--x-terra);
+      }
+      .x-habla::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+      .x-form { background: var(--x-paper); border: 1px solid var(--x-rule); padding: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: 1fr 1fr; gap: 22px 20px; }
+      .x-form .x-full { grid-column: 1 / -1; }
+      @media (max-width: 560px) { .x-form { grid-template-columns: 1fr; } }
+      .x-form label { display: grid; gap: 8px; font: 600 12px/1.4 var(--x-sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--x-ink-2); }
+      .x-form input, .x-form select, .x-form textarea {
+        font: 400 16px/1.5 var(--x-sans); color: var(--x-ink);
+        background: transparent; border: 0; border-bottom: 1px solid #bfb3a5; border-radius: 0;
+        padding: 10px 0; min-height: 46px; width: 100%; letter-spacing: 0; text-transform: none;
+      }
+      .x-form select { appearance: none; -webkit-appearance: none; cursor: pointer;
+        background-image: linear-gradient(45deg, transparent 50%, var(--x-terra) 50%), linear-gradient(135deg, var(--x-terra) 50%, transparent 50%);
+        background-position: calc(100% - 12px) 50%, calc(100% - 6px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+      .x-form textarea { resize: vertical; min-height: 120px; }
+      .x-form input:focus, .x-form select:focus, .x-form textarea:focus { outline: none; border-bottom-color: var(--x-terra); box-shadow: 0 1px 0 var(--x-terra); }
+      .x-form__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .x-form__foot p { font-size: 13px; color: var(--x-ink-2); max-width: 36ch; }
+
+      /* footer */
+      .x-footer { background: var(--x-ink); color: #dfe4e6; padding-block: 64px 36px; }
+      .x-footer__top { display: grid; grid-template-columns: auto 1fr; gap: 40px 64px; align-items: center; }
+      @media (max-width: 760px) { .x-footer__top { grid-template-columns: 1fr; } }
+      .x-footer__logo { background: var(--x-cream); padding: 10px 18px; width: 300px; max-width: 100%; }
+      .x-footer__logo img { width: 100%; aspect-ratio: 1240 / 560; object-fit: cover; mix-blend-mode: multiply; }
+      .x-footer__links { display: flex; flex-wrap: wrap; gap: 12px 36px; justify-content: flex-end; }
+      @media (max-width: 760px) { .x-footer__links { justify-content: flex-start; } }
+      .x-footer__links a { font: 500 26px/1.2 var(--x-serif); text-decoration: none; color: #fff; display: inline-flex; align-items: center; min-height: 44px; }
+      .x-footer__bot nav a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+      .x-footer__bot { align-items: center; }
+      .x-form__status { font-size: 14px; color: var(--x-terra-dk); }
+      .x-form__status:empty { display: none; }
+      .x-footer__links a:hover { color: #e3a58c; }
+      .x-footer__bot {
+        margin-top: 48px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.18);
+        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px;
+        font-size: 13px; color: rgba(223,228,230,0.75);
+      }
+      .x-footer__bot nav { display: flex; gap: 22px; flex-wrap: wrap; }
+      .x-footer__bot a { text-decoration: none; }
+      .x-footer__bot a:hover { color: #fff; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .x-gallery img, .x-service, .x-nav a::after { transition: none; }
+      }
+    </style>
+  </head>
+  <body class="x-site">
+    <div id="top">
+      <header class="x-header">
+        <div class="x-wrap x-header__in">
+          <a class="x-brand" href="#top" aria-label="F &amp; G Design &amp; Drafting, home">
+            <span class="x-mark"><img src="fg-logo-final.png" alt="" /></span>
+            <span class="x-brand__name">F &amp; G Design &amp; Drafting<small>Petaluma · Sonoma County</small></span>
+          </a>
+          <button class="x-menu-btn" type="button" aria-expanded="false" aria-controls="x-nav" aria-label="Open menu"><span></span></button>
+          <nav class="x-nav" id="x-nav" aria-label="Main">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#work">Work</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+            <a class="x-btn" href="#contact">Request a consultation</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="x-hero" aria-labelledby="hero-title">
+          <img src="fg-hero.jpg" alt="A modern gabled farmhouse in the golden hills of Sonoma County" />
+          <div class="x-wrap x-hero__copy">
+            <p class="x-label">Architectural design &amp; drafting · Sonoma County</p>
+            <h1 id="hero-title">Thoughtful buildings, <em>rooted in Sonoma County.</em></h1>
+            <p class="x-hero__sub">F &amp; G Design &amp; Drafting is a small architectural design firm in Sonoma County. We work collaboratively to create innovative, non-generic buildings and places that respect the local built traditions they belong to.</p>
+            <div class="x-btns">
+              <a class="x-btn" href="#contact">Request a consultation</a>
+              <a class="x-btn x-btn--ghost" href="#services">See our services</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="x-section" id="about">
+          <div class="x-wrap x-split">
+            <div>
+              <p class="x-label">About the studio</p>
+              <h2 class="x-h2">A small studio, <em>a collaborative process.</em></h2>
+              <p class="x-lead">We are a small architectural design firm located in Sonoma County, California. We work collaboratively with homeowners, builders and businesses to create innovative, non-generic buildings and places that respect the local built traditions they belong to.</p>
+              <p class="x-lead">From farmhouse gables to Petaluma's historic streets, every project starts with the place it sits in.</p>
+              <div class="x-sign">
+                <dl><dt>Led by</dt><dd>Armando Franco</dd></dl>
+                <dl><dt>Based in</dt><dd>Petaluma, California</dd></dl>
+              </div>
+            </div>
+            <figure class="x-frame">
+              <img src="fg-drafting.jpg" alt="A drafting table with printed plans beside a laptop running CAD software" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="x-section x-section--paper" id="services">
+          <div class="x-wrap">
+            <div class="x-head">
+              <div>
+                <p class="x-label">Services</p>
+                <h2 class="x-h2">From first sketch <em>to permit set.</em></h2>
+              </div>
+              <p class="x-lead">Design, drawings and inspection support for homes, additions and small buildings across the county.</p>
+            </div>
+            <div class="x-services">
+              <article class="x-service">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M6 22 24 7l18 15"/><path d="M11 18v23h26V18"/><path d="M20 41V29h8v12"/><path d="M4 41h40"/></svg>
+                <span class="x-service__n">01</span>
+                <h3>Residential Design</h3>
+                <p>New custom homes designed for their site and neighborhood.</p>
+              </article>
+              <article class="x-service">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M4 24 18 12l14 12"/><path d="M8 21v20h20V21"/><path d="M28 30h16v11H28" stroke-dasharray="3 2.5"/><path d="M36 14v10M31 19h10"/><path d="M2 41h44"/></svg>
+                <span class="x-service__n">02</span>
+                <h3>Additions &amp; Remodels</h3>
+                <p>Expansions that respect the original architecture.</p>
+              </article>
+              <article class="x-service">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M4 41h40"/><path d="M6 24 15 16l9 8"/><path d="M8 22v19h14V22"/><path d="M28 30l8-7 8 7"/><path d="M30 28v13h12V28"/><path d="M34 41v-6h4v6"/><path d="M12 30h6v5h-6z"/></svg>
+                <span class="x-service__n">03</span>
+                <h3>ADUs &amp; Backyard Cottages</h3>
+                <p>Accessory dwelling units, from concept to permit set.</p>
+              </article>
+              <article class="x-service">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M8 5h24l8 8v30H8z"/><path d="M32 5v8h8"/><path d="M14 20h20M14 26h20M14 32h12"/><path d="M14 38h6"/><circle cx="33" cy="36" r="4"/></svg>
+                <span class="x-service__n">04</span>
+                <h3>Permit &amp; Construction Drawings</h3>
+                <p>Complete AutoCAD drawing sets for city and county submittal.</p>
+              </article>
+              <article class="x-service">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M10 14h28v26H10z"/><path d="M10 26h14v14"/><path d="M10 7h28M10 4v6M38 4v6"/><path d="M44 14v26M41 14h6M41 40h6"/></svg>
+                <span class="x-service__n">05</span>
+                <h3>As-Built &amp; Existing Conditions Drawings</h3>
+                <p>Accurate measured drawings of existing buildings.</p>
+              </article>
+              <article class="x-service">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><circle cx="21" cy="21" r="12"/><path d="m30 30 13 13"/><path d="M15 21l4 4 8-8"/></svg>
+                <span class="x-service__n">06</span>
+                <h3>Inspection Services</h3>
+                <p>Property and project inspection support.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="x-section" id="work">
+          <div class="x-wrap">
+            <div class="x-head">
+              <div>
+                <p class="x-label">Selected work</p>
+                <h2 class="x-h2">Buildings that <em>belong where they stand.</em></h2>
+              </div>
+              <p class="x-lead">Farmhouses, backyard cottages and careful additions to historic homes.</p>
+            </div>
+            <div class="x-gallery">
+              <figure>
+                <div class="x-tile"><div class="x-imgbox"><img src="fg-hero.jpg" alt="Modern gabled farmhouse in the Sonoma County hills" loading="lazy" /></div></div>
+                <figcaption>Modern farmhouse <span>Sonoma County hills</span></figcaption>
+              </figure>
+              <figure>
+                <div class="x-tile"><div class="x-imgbox"><img src="fg-adu.jpg" alt="Backyard ADU cottage in Petaluma" loading="lazy" /></div></div>
+                <figcaption>Backyard ADU <span>Petaluma</span></figcaption>
+              </figure>
+              <figure>
+                <div class="x-tile"><div class="x-imgbox"><img src="fg-remodel.jpg" alt="Historic Petaluma Victorian home with a new addition" loading="lazy" /></div></div>
+                <figcaption>Historic home addition <span>Petaluma</span></figcaption>
+              </figure>
+            </div>
+            <p class="x-note">Representative imagery — project portfolio coming soon.</p>
+          </div>
+        </section>
+
+        <section class="x-section x-blueprint" id="process">
+          <div class="x-wrap">
+            <div class="x-head">
+              <div>
+                <p class="x-label">Process</p>
+                <h2 class="x-h2">Four steps, one conversation.</h2>
+              </div>
+              <p class="x-lead">You work with the same small team from the first site visit to the permit counter.</p>
+            </div>
+            <ol class="x-steps">
+              <li><span class="x-steps__n">01</span><h3>Listen</h3><p>A site visit and a conversation about your goals, budget and timeline.</p></li>
+              <li><span class="x-steps__n">02</span><h3>Design</h3><p>Concept sketches and plans, refined together with you.</p></li>
+              <li><span class="x-steps__n">03</span><h3>Draft</h3><p>Detailed construction and permit drawings in AutoCAD.</p></li>
+              <li><span class="x-steps__n">04</span><h3>Permit &amp; Build</h3><p>Submittal support and coordination with your builder.</p></li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="x-area" aria-label="Service area">
+          <div class="x-wrap x-area__in">
+            <p class="x-label">Service area</p>
+            <ul>
+              <li>Petaluma</li><li>Penngrove</li><li>Santa Rosa</li><li>Sonoma</li><li>Cotati</li><li>Rohnert Park</li><li class="x-area__more">and throughout Sonoma County</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="x-section x-section--paper" id="contact">
+          <div class="x-wrap x-contact">
+            <div>
+              <p class="x-label">Contact</p>
+              <h2 class="x-h2">Let's talk about <em>your project.</em></h2>
+              <p class="x-lead">Tell us a little about what you have in mind. We'll get back to you to set up a first conversation.</p>
+              <ul class="x-details">
+                <li><b>Phone</b><a href="tel:+17074781919">707-478-1919</a></li>
+                <li><b>Email</b><a href="mailto:fgdrafting@sbcglobal.net">fgdrafting@sbcglobal.net</a></li>
+                <li><b>Studio</b><span>Petaluma &amp; Penngrove, Sonoma County, CA</span></li>
+              </ul>
+              <p class="x-habla" lang="es">Se habla español</p>
+            </div>
+            <form class="x-form" id="x-form" novalidate>
+              <label>Name<input name="name" type="text" autocomplete="name" required /></label>
+              <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+              <label>Phone<input name="phone" type="tel" autocomplete="tel" /></label>
+              <label>Project type
+                <select name="type">
+                  <option>New home</option>
+                  <option>Addition/Remodel</option>
+                  <option>ADU</option>
+                  <option>Permit drawings</option>
+                  <option>As-built drawings</option>
+                  <option>Inspection</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label class="x-full">Message<textarea name="message" rows="5" placeholder="Where is the property, and what would you like to build?"></textarea></label>
+              <div class="x-full x-form__foot">
+                <p>Sending opens your email app with your details filled in.</p>
+                <button class="x-btn" type="submit">Send message</button>
+              </div>
+              <p class="x-full x-form__status" id="x-form-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="x-footer">
+        <div class="x-wrap">
+          <div class="x-footer__top">
+            <div class="x-footer__logo"><img src="fg-logo-final.png" alt="F &amp; G Design &amp; Drafting, Petaluma · Sonoma County" /></div>
+            <div class="x-footer__links">
+              <a href="tel:+17074781919">707-478-1919</a>
+              <a href="mailto:fgdrafting@sbcglobal.net">fgdrafting@sbcglobal.net</a>
+            </div>
+          </div>
+          <div class="x-footer__bot">
+            <p>© 2026 F &amp; G Design &amp; Drafting Services</p>
+            <nav aria-label="Footer">
+              <a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a>
+            </nav>
+            <p>Site by Sonoma Web Agency</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="hark.js"></script>
+    <script>
+      (function () {
+        var btn = document.querySelector(".x-menu-btn");
+        var nav = document.getElementById("x-nav");
+        function setOpen(open) {
+          nav.classList.toggle("is-open", open);
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        }
+        btn.addEventListener("click", function () { setOpen(!nav.classList.contains("is-open")); });
+        nav.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+
+        var form = document.getElementById("x-form");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var f = form.elements;
+          var status = document.getElementById("x-form-status");
+          var missing = !f.name.value.trim() ? f.name : !f.email.value.trim() ? f.email : null;
+          f.name.setAttribute("aria-invalid", f.name.value.trim() ? "false" : "true");
+          f.email.setAttribute("aria-invalid", f.email.value.trim() ? "false" : "true");
+          if (missing) {
+            status.textContent = "Please add your name and email so we can reply.";
+            missing.focus();
+            return;
+          }
+          status.textContent = "Opening your email app with your message…";
+          var body =
+            "Name: " + f.name.value + "\n" +
+            "Email: " + f.email.value + "\n" +
+            "Phone: " + f.phone.value + "\n" +
+            "Project type: " + f.type.value + "\n\n" +
+            f.message.value;
+          var subject = "Consultation request: " + f.type.value + " (" + f.name.value + ")";
+          window.location.href = "mailto:fgdrafting@sbcglobal.net?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        });
+      })();
+    </script>
+  </body>
+</html>
